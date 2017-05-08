@@ -21,7 +21,7 @@ En partant de l'api existante, vous devez ajouter les services suivantes :
 * Récupérer, pour un projet, tous les utilisateurs qui ont notés en précisant pour chaque utilisateur la note attribuée
 * Supprimer une note
 
-** Contraintes : **
+**Contraintes :**
 
 * Un utilisateur ne peut donner qu'une seul note par projet
 * Les notes vont de 1 à 10
