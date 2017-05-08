@@ -21,7 +21,7 @@ En partant de l'api https://github.com/davidostermann/sdw3a-react-exam2-support,
 
 ### Contraintes : 
 
-* Un user ne peut note qu'une seule fois un projet
+* Un user ne peut donner qu'une seul note par projet
 * Les notes vont de 1 à 10
 * La date de la creation d'une note doit être sauvegardée
 * La date de la modification d'une note doit être sauvegardée
