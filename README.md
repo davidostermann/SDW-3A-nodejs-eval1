@@ -8,7 +8,9 @@
 
 #### 3. Cloner votre fork
 
-#### 4. Implémenter les fonctionnalités suivantes :
+#### 4. Installer et démarrer le projet
+
+#### 5. Implémenter les fonctionnalités suivantes :
 
 En partant de l'api existante, vous devez ajouter les services suivantes :
 
@@ -19,7 +21,7 @@ En partant de l'api existante, vous devez ajouter les services suivantes :
 * Récupérer, pour un projet, tous les utilisateurs qui ont notés en précisant pour chaque utilisateur la note attribuée
 * Supprimer une note
 
-### Contraintes :
+** Contraintes : **
 
 * Un utilisateur ne peut donner qu'une seul note par projet
 * Les notes vont de 1 à 10
@@ -27,4 +29,4 @@ En partant de l'api existante, vous devez ajouter les services suivantes :
 * La date de la modification d'une note doit être sauvegardée
 * Les moyennes de note par projet doivent être présentée avec 2 décimales
 
-## 5. Une fois le travail terminé, ajouter un commentaire "terminé" à  votre pull-request
+#### 6. Une fois le travail terminé, ajouter un commentaire "terminé" à  votre pull-request
