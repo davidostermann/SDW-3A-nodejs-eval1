@@ -10,20 +10,20 @@
 
 #### 4. Implémenter les fonctionnalités suivantes :
 
-En partant de l'api https://github.com/davidostermann/sdw3a-react-exam2-support, vous devez ajouter les services suivantes :
+En partant de l'api existante, vous devez ajouter les services suivantes :
 
-* Noter un projet avec un userId (la date de la creation de la note doit être sauvegardé)
+* Noter un projet avec un userId (la date de la création de la note doit être sauvegardé)
 * Modifier une note
-* Lister les projets **avec la moyenne des notes et le nombre total de note pour chaque projet **
-* Récupérer, pour un user, tous les projets qu'un user a noté en précisant pour chaque projet la note attribuée
-* Récupérer, pour un projet, tous les users qui ont notés en précisant pour chaque user la note attribuée
+* Lister les projets **avec la moyenne des notes et le nombre total de note pour chaque projet**
+* Récupérer, pour un utilisateur, tous les projets qu'un utilisateur a noté en précisant pour chaque projet la note attribuée, la date de création, la date de modification de la note
+* Récupérer, pour un projet, tous les utilisateurs qui ont notés en précisant pour chaque utilisateur la note attribuée
 * Supprimer une note
 
-### Contraintes : 
+### Contraintes :
 
-* Un user ne peut donner qu'une seul note par projet
+* Un utilisateur ne peut donner qu'une seul note par projet
 * Les notes vont de 1 à 10
-* La date de la creation d'une note doit être sauvegardée
+* La date de la création d'une note doit être sauvegardée
 * La date de la modification d'une note doit être sauvegardée
 * Les moyennes de note par projet doivent être présentée avec 2 décimales
 
