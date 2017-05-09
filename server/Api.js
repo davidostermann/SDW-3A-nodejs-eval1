@@ -30,7 +30,7 @@ router.put('/user/:id', UserController.updateUser);
 router.delete('/user/:id', UserController.deleteUser);
 
 // Récupérer tous les projets qu'un utilisateur à noté...
-//router.get('/user-noted/:id', UserController.getUserNoted);
+router.get('/user-noted/:id', UserController.getUserNoted);
 
 router.get('/projects', ProjectController.getProjects);
 router.get('/project/:id', ProjectController.getProject);
@@ -39,20 +39,20 @@ router.put('/project/:id', ProjectController.updateProject);
 router.delete('/project/:id', ProjectController.deleteProject);
 router.get('/user/:id/projects', ProjectController.getUserProjects);
 // Lister les projets avec la moyenne des notes...
-//router.get('/formatted-projects', ProjectController.getCompleteProjects);
+router.get('/complete-projects', ProjectController.getCompleteProjects);
 
 // Récupérer, pour un projet, tous les utilisateurs qui ont noté...
-//router.get('project-noted/:id', ProjectController.getProjectNoted)
+router.get('/project-noted/:id', ProjectController.getProjectNoted)
 
 
 // Noter un projet avec un userId
-//router.post('/add-note', NoteController.addNote);
+router.post('/add-note', NoteController.addNote);
 
 // Modifier une note
-//router.put('/edit-note/:id', NoteController.editNote);
+router.put('/edit-note/:id', NoteController.editNote);
 
 // Supprimer une note
-//router.delete('/delete-note/:id', NoteController.deleteNote)
+router.delete('/delete-note/:id', NoteController.deleteNote)
 
 
 module.exports = router;

@@ -10,7 +10,11 @@ const NoteSchema = new Schema({
     'ref': 'Project',
     'type': Schema.Types.ObjectId
   },
-  'amount': Int,
+  'note': {
+    type: Number,
+    min: 1,
+    max: 10
+  },
   'dateCreated': Date,
   'dateModified': Date
 });

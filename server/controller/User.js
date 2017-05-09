@@ -1,4 +1,5 @@
 const UserModel = require('../model/User');
+const NoteModel = require('../model/Note')
 
 const UserController = {
 
@@ -48,7 +49,18 @@ const UserController = {
       }
       res.json({ message: 'User deleted!' })
     });
-  }
+  },
+
+  getUserNoted: (req, res) => {
+      NoteModel.find({
+      '_creator': req.params.id,
+    }, '_project note dateCreated dateModified', function(err, note){
+      if (err) {
+        return res.send(err)
+      }
+      return res.send(note)
+    })
+  },
 
 }
 

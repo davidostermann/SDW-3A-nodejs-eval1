@@ -1,4 +1,6 @@
 const Project = require('../model/Project');
+const NoteModel = require('../model/Note')
+const UserModel = require('../model/User')
 
 const ProjectController = {
 
@@ -62,6 +64,76 @@ const ProjectController = {
       if (err) { res.send(err); }
       res.json(projects);
     });
+  },
+
+  getProjectNoted: (req, res) => {
+    NoteModel.find({
+      '_project': req.params.id
+    }, '_creator note', function(err, notes){
+      if (err){res.send(err)}
+
+      let userArray = []
+      for (let i = 0; i < notes.length; i++){
+        UserModel.find({
+          '_id': notes[i]._creator
+        }, 'name', function(err, user){
+          if (err){res.send(err)}
+
+          // Si on a bien un user on le formatte en y ajoutant sa note
+          if (null != user){
+            let userFormatted = {
+              'userId': user[0]._id,
+              'name': user[0].name,
+              'note': notes[i].note
+            }
+            userArray.push(userFormatted)
+          }
+          // Si c'est la dernière itération
+          if (i == notes.length - 1){
+            res.json(userArray)
+          }
+        })
+      }
+    })
+  },
+
+  getCompleteProjects: (req, res) => {
+      Project.find({}, '_creator title description', function(err, projects){
+        if (err){res.send(err)}
+
+        let projectArray = []
+        // On parcourt les projets pour récupérer toutes les notes
+        for (let i = 0; i < projects.length; i++){
+          let projectObject = {
+            'projectId': projects[i]._id,
+            'title': projects[i].title,
+            'description': projects[i].description,
+            'numberNotes': 0,
+            'average': 0
+          }
+          let notesAddition = 0;
+
+          NoteModel.find({
+            '_project': projects[i]._id
+          }, 'note', function(err, notes){
+            // On parcours les notes pour faire la moyenne
+            for (let j = 0; j < notes.length; j++){
+              projectObject.numberNotes++;
+              notesAddition += notes[j].note
+
+              // Si c'est la dernière itération
+              if (j == notes.length - 1){
+                projectObject.average = (notesAddition / projectObject.numberNotes).toFixed(2);
+                projectArray.push(projectObject);
+
+                if (i == projects.length - 1){
+                  res.json(projectArray)
+                }
+              }
+            }
+          });      
+        }
+      })
   }
 
 };
