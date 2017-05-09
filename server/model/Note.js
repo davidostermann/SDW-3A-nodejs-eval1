@@ -6,12 +6,12 @@ const ProjectSchema = new Schema({
     'ref': 'User',
     'type': Schema.Types.ObjectId
   },
-  '_note': {
-    'ref': 'Note',
+  '_project': {
+    'ref': 'Project',
     'type': Schema.Types.ObjectId
   },
-  'title': String,
-  'description': String
+  'note': Number,
+  'created_at': Date
 });
 
 module.exports = mongoose.model('Project', ProjectSchema);
