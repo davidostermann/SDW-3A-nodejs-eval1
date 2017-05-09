@@ -1,4 +1,6 @@
 const Project = require('../model/Project');
+const Grade = require('../model/Grade');
+const GradeController = require('../controller/Grade');
 
 const ProjectController = {
 
@@ -62,7 +64,22 @@ const ProjectController = {
       if (err) { res.send(err); }
       res.json(projects);
     });
-  }
+  },
+
+  // getProjectsNotes: (req, res) => {
+  //   Project.findOne({_id: req.params.id})
+  //   .exec((err, project) => {
+  //       if (err) {
+  //         return res.send(err);
+  //     }
+  //     Grade.find({project: req.params.id})
+  //     .exec((err, grades) => {
+  //       if (err) { res.send(err); }
+  //       var ProjectGrades = grades;
+  //     });
+  //     res.json(grades);
+  //   }); 
+  // },
 
 };
 

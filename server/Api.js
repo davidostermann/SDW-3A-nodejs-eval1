@@ -5,15 +5,12 @@ const mongoose = require('mongoose');
 
 const UserController = require('./controller/User');
 const ProjectController = require('./controller/Project');
+const GradeController = require('./controller/Grade');
 
 const bodyParser = require('body-parser');
 const router = Router();
 
-if(process.env.NODE_ENV == 'production') {
-  mongoose.connect(`mongodb://${process.env.MLAB_DBUSER}:${process.env.MLAB_DBPASSWORD}@${process.env.MLAB_DBURL}`);
-} else {
-  mongoose.connect('mongodb://localhost:27017/kickass');
-}
+mongoose.connect(`mongodb://zackstrife:antoine2199@ds129281.mlab.com:29281/heroku_db`);
 
 router.use(bodyParser.json({'extended': true}));
 router.use(bodyParser.json());
@@ -34,5 +31,12 @@ router.post('/project', ProjectController.createProject);
 router.put('/project/:id', ProjectController.updateProject);
 router.delete('/project/:id', ProjectController.deleteProject);
 router.get('/user/:id/projects', ProjectController.getUserProjects);
+// router.get('/project/:id/grades', ProjectController.getProjectsNotes);
+
+router.get('/grades', GradeController.getGrades);
+router.get('/grade/:id', GradeController.getGrade);
+router.post('/grade', GradeController.createGrade);
+router.put('/grade/:id', GradeController.updateGrade);
+router.delete('/grade/:id', GradeController.deleteGrade);
 
 module.exports = router;
