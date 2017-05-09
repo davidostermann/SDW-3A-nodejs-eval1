@@ -6,6 +6,7 @@ const ProjectSchema = new Schema({
     'ref': 'User',
     'type': Schema.Types.ObjectId
   },
+  'grades': [{ type: Schema.Types.ObjectId, ref: 'Grade' }],
   'title': String,
   'description': String
 });
