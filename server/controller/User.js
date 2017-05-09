@@ -48,7 +48,20 @@ const UserController = {
       }
       res.json({ message: 'User deleted!' })
     });
-  }
+  },
+  //get(projectId)
+  getProjectUsersRated: (req, res) => {
+    //Je connais pas la synthax Mangoo pour les requetes
+    //sinon tout récupérer et faire une boucle dans les résults avec des requetes = cracra
+
+
+    // UserModel.findOne({_id: req.params.id})
+    // .exec((err, user) => {
+    //   if (err) { res.send(err); }
+    //   res.json(user);
+    // });
+  },
+
 
 }
 
