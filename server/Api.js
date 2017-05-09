@@ -12,7 +12,7 @@ const router = Router();
 if(process.env.NODE_ENV == 'production') {
   mongoose.connect(`mongodb://${process.env.MLAB_DBUSER}:${process.env.MLAB_DBPASSWORD}@${process.env.MLAB_DBURL}`);
 } else {
-  mongoose.connect('mongodb://localhost:27017/kickass');
+  mongoose.connect('mongodb://admin:admin@ds133271.mlab.com:33271/bestdatabaseeu');
 }
 
 router.use(bodyParser.json({'extended': true}));
