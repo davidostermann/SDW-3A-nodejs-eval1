@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const UserController = require('./controller/User');
 const ProjectController = require('./controller/Project');
+const NoteController = require('./controller/Note');
 
 const bodyParser = require('body-parser');
 const router = Router();
@@ -12,7 +13,7 @@ const router = Router();
 if(process.env.NODE_ENV == 'production') {
   mongoose.connect(`mongodb://${process.env.MLAB_DBUSER}:${process.env.MLAB_DBPASSWORD}@${process.env.MLAB_DBURL}`);
 } else {
-  mongoose.connect('mongodb://localhost:27017/kickass');
+  mongoose.connect('mongodb://dokunu:gwak@ds129031.mlab.com:29031/lourd');
 }
 
 router.use(bodyParser.json({'extended': true}));
@@ -34,5 +35,9 @@ router.post('/project', ProjectController.createProject);
 router.put('/project/:id', ProjectController.updateProject);
 router.delete('/project/:id', ProjectController.deleteProject);
 router.get('/user/:id/projects', ProjectController.getUserProjects);
+
+router.post('/note', NoteController.createNote);
+router.put('/note/:id', NoteController.updateNote);
+router.delete('/note/:id', NoteController.deleteNote);
 
 module.exports = router;
