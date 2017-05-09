@@ -72,6 +72,7 @@ const ProjectController = {
     }, '_creator note', function(err, notes){
       if (err){res.send(err)}
 
+      // On va mettre tous les users dans un tableau bien formatté
       let userArray = []
       for (let i = 0; i < notes.length; i++){
         UserModel.find({
@@ -101,6 +102,7 @@ const ProjectController = {
       Project.find({}, '_creator title description', function(err, projects){
         if (err){res.send(err)}
 
+        // On va mettre les projets dans un tableau bien formatté
         let projectArray = []
         // On parcourt les projets pour récupérer toutes les notes
         for (let i = 0; i < projects.length; i++){
