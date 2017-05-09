@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const UserController = require('./controller/User');
 const ProjectController = require('./controller/Project');
+const GradeController = require('./controller/Grade');
 
 const bodyParser = require('body-parser');
 const router = Router();
@@ -34,5 +35,9 @@ router.post('/project', ProjectController.createProject);
 router.put('/project/:id', ProjectController.updateProject);
 router.delete('/project/:id', ProjectController.deleteProject);
 router.get('/user/:id/projects', ProjectController.getUserProjects);
+
+router.delete('/grade/:id', GradeController.deleteGrade);
+router.post('/grade/:projectId/:userId', GradeController.createGrade);
+router.put('/grade/:id', GradeController.updateGrade);
 
 module.exports = router;
