@@ -35,14 +35,12 @@ const NoteController = {
   },
 
   editNote: (req, res) => {
-    NoteModel.findByIdAndUpdate(req.params.id, { $set: req.body}, {new: true}, (err, note) => {
-      note.dateModified = new Date();
-      note.save((err, user) => {
-        if (err) {
-            return res.send(err)
-          }
-          res.json(note)
-      })
+    NoteModel.findByIdAndUpdate(req.params.id, { $set: req.body, dateModified: new Date()}, {new: true}, (err, note) => {
+      if (err) {
+          return res.send(err)
+        }
+        
+        res.json(note)
     });
   },
 
