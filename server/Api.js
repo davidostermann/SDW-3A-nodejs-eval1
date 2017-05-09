@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const UserController = require('./controller/User');
 const ProjectController = require('./controller/Project');
+const RateController = require('./controller/Rate');
 
 const bodyParser = require('body-parser');
 const router = Router();
@@ -12,7 +13,7 @@ const router = Router();
 if(process.env.NODE_ENV == 'production') {
   mongoose.connect(`mongodb://${process.env.MLAB_DBUSER}:${process.env.MLAB_DBPASSWORD}@${process.env.MLAB_DBURL}`);
 } else {
-  mongoose.connect('mongodb://localhost:27017/kickass');
+  mongoose.connect('mongodb://zackstrife:antoine2199@ds129281.mlab.com:29281/heroku_db');
 }
 
 router.use(bodyParser.json({'extended': true}));
@@ -34,5 +35,9 @@ router.post('/project', ProjectController.createProject);
 router.put('/project/:id', ProjectController.updateProject);
 router.delete('/project/:id', ProjectController.deleteProject);
 router.get('/user/:id/projects', ProjectController.getUserProjects);
+
+router.post('/rate', RateController.createRate);
+router.put('/rate/:id', RateController.updateRate);
+router.delete('/rate/:id', RateController.deleteRate);
 
 module.exports = router;
