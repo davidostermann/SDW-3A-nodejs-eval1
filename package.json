@@ -1,7 +1,7 @@
 {
   "name": "sdw3a-react-exam2-support",
   "version": "1.0.0",
-  "description": "",
+  "description": "# Consignes",
   "main": "./server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
