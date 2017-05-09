@@ -1,5 +1,5 @@
 {
-  "name": "sdw3a-react-exam2-support",
+  "name": "sdw-3a-nodejs-eval1",
   "version": "1.0.0",
   "description": "",
   "main": "./server/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidostermann/sdw3a-react-exam2-support.git"
+    "url": "git+https://github.com/AdrienSldy/SDW-3A-nodejs-eval1.git"
   },
   "author": "",
   "license": "ISC",

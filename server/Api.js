@@ -9,11 +9,11 @@ const ProjectController = require('./controller/Project');
 const bodyParser = require('body-parser');
 const router = Router();
 
-if(process.env.NODE_ENV == 'production') {
+//if(process.env.NODE_ENV == 'production') {
   mongoose.connect(`mongodb://${process.env.MLAB_DBUSER}:${process.env.MLAB_DBPASSWORD}@${process.env.MLAB_DBURL}`);
-} else {
+/*} else {
   mongoose.connect('mongodb://localhost:27017/kickass');
-}
+}*/
 
 router.use(bodyParser.json({'extended': true}));
 router.use(bodyParser.json());
