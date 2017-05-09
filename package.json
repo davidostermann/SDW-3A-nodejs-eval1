@@ -13,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/davidostermann/sdw3a-react-exam2-support/issues"
+    "url": "https://github.com/AdrienSldy/SDW-3A-nodejs-eval1/issues"
   },
-  "homepage": "https://github.com/davidostermann/sdw3a-react-exam2-support#readme",
+  "homepage": "https://github.com/AdrienSldy/SDW-3A-nodejs-eval1#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
