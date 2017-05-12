@@ -80,7 +80,7 @@ const ProjectController = {
           if (err) { return res.send(err).status(500); }
           formattedProject.numberOfNotes = notes.length;
           if (notes.length) {
-            formattedProject.average = notes.reduce((a, b) => { return a.note + b.note });
+            formattedProject.average = notes.reduce((a, b) => { return a.note + b.note }, { note: 0 });
             formattedProject.average /= notes.length;
             formattedProject.average = formattedProject.average.toFixed(2);
           }
