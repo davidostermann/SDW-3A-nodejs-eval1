@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const UserController = require('./controller/User');
 const ProjectController = require('./controller/Project');
+const NoteController = require('./controller/Note');
 
 const bodyParser = require('body-parser');
 const router = Router();
@@ -27,6 +28,7 @@ router.get('/user/:id', UserController.getUser);
 router.post('/user', UserController.createUser);
 router.put('/user/:id', UserController.updateUser);
 router.delete('/user/:id', UserController.deleteUser);
+router.get('/user/:id/notes', UserController.getNotes);
 
 router.get('/projects', ProjectController.getProjects);
 router.get('/project/:id', ProjectController.getProject);
@@ -34,5 +36,11 @@ router.post('/project', ProjectController.createProject);
 router.put('/project/:id', ProjectController.updateProject);
 router.delete('/project/:id', ProjectController.deleteProject);
 router.get('/user/:id/projects', ProjectController.getUserProjects);
+router.get('/projects/average-note', ProjectController.getAverageNotes);
+
+router.get('/project/:id/notes', NoteController.getNoteFromProject);
+router.delete('/project/:projectId/note/:noteId', NoteController.deleteNote);
+router.post('/project/:id/note', NoteController.createNote);
+router.put('/project/:projectId/note/:noteId', NoteController.updateNote);
 
 module.exports = router;

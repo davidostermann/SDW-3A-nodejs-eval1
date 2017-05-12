@@ -1,4 +1,7 @@
 const Project = require('../model/Project');
+const Note = require('../model/Note');
+const lodash = require('lodash');
+const map = require('async').map;
 
 const ProjectController = {
 
@@ -62,6 +65,37 @@ const ProjectController = {
       if (err) { res.send(err); }
       res.json(projects);
     });
+  },
+
+  /**
+   * Get the average not on two decimals if the project has atleast one note
+   * @param {any} req
+   * @param {any} res
+   */
+  getAverageNotes: (req, res) => {
+    const getAverage = (project, callback) => {
+      let formattedProject = lodash.cloneDeep(project);
+      Note.find({ _project: project._id })
+        .exec((err, notes) => {
+          if (err) { return res.send(err).status(500); }
+          formattedProject.numberOfNotes = notes.length;
+          if (notes.length) {
+            formattedProject.average = notes.reduce((a, b) => { return a.note + b.note }, { note: 0 });
+            formattedProject.average /= notes.length;
+            formattedProject.average = formattedProject.average.toFixed(2);
+          }
+          callback(null, formattedProject);
+        });
+    };
+
+    Project.find()
+      .lean()
+      .exec((err, projects) => {
+        if (err) { return res.send(err).status(500); }
+        map(projects, getAverage, (err, formattedProjects) => {
+          res.json(formattedProjects);
+        });
+      })
   }
 
 };

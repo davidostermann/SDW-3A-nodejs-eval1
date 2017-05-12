@@ -1,4 +1,5 @@
 const UserModel = require('../model/User');
+const Note = require('../model/Note');
 
 const UserController = {
 
@@ -48,6 +49,20 @@ const UserController = {
       }
       res.json({ message: 'User deleted!' })
     });
+  },
+
+  getNotes: (req, res) => {
+    Note.find({ _creator: req.params.id })
+      .populate({
+        path: '_project',
+        model: 'Project'
+      })
+      .exec((err, notes) => {
+        if (err) {
+          return res.send(err).status(500);
+        }
+        res.json(notes);
+      })
   }
 
 }
