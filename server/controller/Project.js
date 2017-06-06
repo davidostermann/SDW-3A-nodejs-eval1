@@ -1,4 +1,5 @@
 const Project = require('../model/Project');
+const Grade = require('../model/Grade');
 
 const ProjectController = {
 
@@ -9,8 +10,26 @@ const ProjectController = {
       model: 'User'})
     .exec((err, projects) => {
       if (err) { res.send(err) }
+      var notes = [];
+      for (var i = 0; i < projects.length; i++) {
+        Grade.find({
+          '_project': projects[i]._id
+        }, 'note', function(err, notes){
+          if (err) {
+            return res.send(err)
+          }
+          if (null != notes){
+            var aNote = null;
+            for (var u = 0; u < notes.length; u++) {
+              aNote = (aNote + notes[u]) / 2;
+            }
+            projects['notes'] = aNote;
+            console.log(projects);
+          }
+        });
+      }
       res.json(projects);
-    })
+    });
   },
 
   createProject: (req, res) => {

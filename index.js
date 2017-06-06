@@ -1,10 +1,6 @@
 const express = require('express');
 const Api = require('./server/Api');
-const myApp = require('./myapp/app');
-var request = require('request');
-
-var users = require('./myapp/routes/users');
-
+require('dotenv').config();
 const app = express();
 
 app.use(function(req, res, next) {
@@ -17,21 +13,9 @@ app.use(function(req, res, next) {
 
 app.use('/api', Api);
 
-/* GET users listing. */
-app.get('/users', function(req, res, next) {
-  
-  res.send('respond with a resource');
+app.get('/*', (req, res) => {
+  res.status(404).send('Cette page n\'existe pas.');
 });
-
-app.post('/add/user', function (req, res) {
-  res.send({
-    	"age": 15,
-	    "name": "Jean-2",
-	    "type": "gentil"
-  });
-});
-
-app.get('/*', myApp);
 
 const port = process.env.PORT || 5000;
 app.listen( port, function () {
